@@ -1,14 +1,21 @@
-const printBoard = (board) => {
+/*const printBoard = (board) => {
   console.log('Current Board:');
   console.log(board[0].join(' | '));
-};
-let board = [
+};*/
+const unoBoard = [
   [' ', ' ', ' '],
   [' ', ' ', ' '],
   [' ', ' ', ' '],
 ];
-printBoard(board);
-board.fill('|');
-console.log(board);
-console.log(board);
-console.log(board);
+
+const printBoard = board => {
+  console.log('Current Board: ');
+  console.log(board[0].join(' | '));
+  console.log(board[1].join(' | '));
+  console.log(board[2].join(' | '));
+};
+
+printBoard(unoBoard);
+unoBoard[0][1] = 1;
+unoBoard[1][0] = 'B';
+printBoard(unoBoard);
