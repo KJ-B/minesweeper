@@ -19,20 +19,18 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
     }
     board.push(row);
   }
-  const numberOfBombsPlaced = 0;
+  let numberOfBombsPlaced = 0;
     while (numberOfBombsPlaced < numberOfBombs) {
       let randomRowIndex = Math.floor(Math.random() * numberOfRows);
-      let randomIndColumnIndex = Math.floor(Math.random() * numberOfColumns);
-      board[randomRowIndex][randomIndColumnIndex] = 'B';
+      let randomColumnIndex = Math.floor(Math.random() * numberOfColumns);
+      board[randomRowIndex][randomColumnIndex] = 'B';
+
       numberOfBombsPlaced++;
         //potential to add bombs now//
     }
   return board;
 };
 
-
-console.log(generatePlayerBoard(3, 4));
-console.log(generateBombBoard(3, 4));
 
 const printBoard = board => {
   console.log(board.map(row => row.join(' | ')).join('\n'));
@@ -41,6 +39,6 @@ const printBoard = board => {
 const playerBoard = generatePlayerBoard(3, 4);
 const bombBoard = generateBombBoard(3, 4, 5);
 console.log('Player Board: ');
-printboard(playerBoard);
+printBoard(playerBoard);
 console.log('Bomb Board: ');
 printBoard(bombBoard);
