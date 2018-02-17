@@ -50,8 +50,11 @@ const getNumberOfNeighborBombs (bombBoard, rowIndex, columnIndex) => {
   const numberOfRows = bombBoard.length;
   const numberOfColumns = bomboard[0].length;
   let numberOfBombs = 0;
+  numbeOffSets.forEach(offset => {
+    const neighborRowIndex = rowIndex + offset[0];
+    const neighborColumnIndex = columnIndex + offset[0];
+  });
 }
-
 
 const printBoard = board => {
   console.log(board.map(row => row.join(' | ')).join('\n'));
