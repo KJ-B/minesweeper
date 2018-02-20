@@ -47,32 +47,38 @@ const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
   ];
   const numberOfRows = bombBoard.length;
   const numberOfColumns = bomboard[0].length;
+
   let numberOfBombs = 0;
-  numbeOffSets.forEach(offset => {
+
+  neighborOffsetss.forEach(offset => {
     const neighborRowIndex = rowIndex + offset[0];
     const neighborColumnIndex = columnIndex + offset[0];
-  });
+
   if (neighborRowIndex >= 0 && neighborRowIndex < numberOfRows && neighborColumnIndex >= 0
     && neighborColumnIndex < numberOfColumns) {
-      if (bombBoard[neighborRowIndex][0][neighborColumnIndex][0] !== 'B') {
-        bombBoard[neighborRowIndex][0][neighborColumnIndex][0] == 'B';
+      if (bombBoard[neighborRowIndex][neighborColumnIndex] !== 'B') {
+        bombBoard[neighborRowIndex][neighborColumnIndex] == 'B';
         numberOfBombs++;
       }
-    };
+    }
+ });
 return numberOfBombs;
-
-    const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
-      if (playerBoard[rowIndex][columnIndex] !== ' ') {
-      console.log('The tile has been flipped');
-      return;
-    } else if (bombBoard[rowIndex][columnIndex] === 'B') {
-      playerBoard [rowIndex][columnIndex] = 'B';
-    } else (playerBoard[rowIndex][columnIndex] === getNumberOfNeighborBombs(bombBoard, rowIndex, columnIndex));
-  }
 };
 
+const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
+  if (playerBoard[rowIndex][columnIndex] !== ' ') {
+  console.log('The tile has been flipped');
+  return;
+  } else if (bombBoard[rowIndex][columnIndex] === 'B') {
+    playerBoard [rowIndex][columnIndex] = 'B';
+  } else {
+    (playerBoard[rowIndex][columnIndex] === getNumberOfNeighborBombs(bombBoard, rowIndex, columnIndex));
+    }
+  };
+
+
 const printBoard = board => {
-  console.log(board.map(row => row.join(' | ')).join('\n'));
+console.log(board.map(row => row.join(' | ')).join('\n'));
 };
 
 let playerBoard = generatePlayerBoard(3, 4);
