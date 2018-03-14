@@ -3,18 +3,18 @@ class Game {
     this._board = new Board(numberOfRows, numberOfColumns, numberOfBombs);
   }
 
-  playmove(rowIndex, columnIndex){
+  playMove(rowIndex, columnIndex){
     flipTile(rowIndex, columnIndex);
     if(this.playerBoard[rowIndex][columnIndex] === 'B') {
       console.log('The game is over.');
+    } else if (!this._board.noBombsSpacesLeft()) {
+      console.log('You are the champion!');
+    } else {
+      console.log('Current Board')
+      this._board.print();
+      }
     }
-    print(this._board);
   }
-
-};
-
-
-
 
 class Board {
   constructor(numberOfRows, numberOfColumns, numberOfBombs) {
@@ -71,7 +71,7 @@ class Board {
         }
        });
      return this._numberOfBombs;
-     };
+     }
 
      hasSafeTiles(numberOfTiles, numeberOfBoms) {
        return this._numberOfTiles !== this._numberOfBombs;
@@ -93,13 +93,11 @@ class Board {
       }
      }  //potential to add bombs now//
      return board;
-   };
-
-
+   }
 
 print() {
   console.log(this._playerBoard.map(row => row.join(' | ')).join('\n'));
-};
+}
 
 static generatePlayerBoard(numberOfRows, numberOfColumns) {
   const board = [];
